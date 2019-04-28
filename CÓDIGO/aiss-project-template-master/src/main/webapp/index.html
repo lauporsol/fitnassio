@@ -6,19 +6,28 @@
   </head>
 
   <body>
-    <h1>Tiempo(Apixu):</h1>
+    <h1>FITNASSIO</h1>
 	
     <table>
       <tr>
-        <td colspan="2" style="font-weight:bold;">Available Servlets:</td>        
+        <td colspan="2" style="font-weight:bold;">Enlaces de la página:</td>        
       </tr>
       <tr>
-        <td><a href="helloworld">HelloWorld</a></td>
+        <td><a href="helloworld">HelloWorld</a>
+        <br><a href="ReadMe">Sobre nosotros</a>
+        <br><a href="Twitter">Twitter Profile</a></td>
       </tr>
     </table>
+    <h1>Apixu</h1>
     <div id="searchDiv">
 		<form id="searchForm" action="WeatherController" method="post">
 			location: <input type="text" name="region" required/> 
+			<input type="submit" name="searchBtn" title="search" value="search">
+		</form>
+		<br>
+	<h1>GoogleMaps</h1>
+		<form id="searchForm" action="GoogleMaps" method="post">
+			location: <input type="text" name="place" required/>  
 			<input type="submit" name="searchBtn" title="search" value="search">
 		</form>
 	</div>

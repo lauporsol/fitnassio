@@ -12,7 +12,7 @@
 
 
 <fieldset id="apixu">
-<legend>Apixu search for <c:out value="${param.searchQuery}"/></legend>
+<legend>Apixu search for <c:out value="${param.region}"/></legend>
 <c:forEach items="${requestScope.current}" var="current">
 	<span>Movie title: <c:out value="${current.feelslikeC}"/></span><br/>
 </c:forEach>

@@ -36,12 +36,16 @@ public class WeatherController extends HttpServlet {
 		
 		if (result!=null){
 			rd = request.getRequestDispatcher("/success.jsp");
-			request.setAttribute("current", result.getLocation());		
+			request.setAttribute("current", result.getCurrent().getFeelslikeC());		
 		} else {
 			log.log(Level.SEVERE, "Apixu Objecct: " + result);
 			rd = request.getRequestDispatcher("/error.jsp");
 		}
 		rd.forward(request, response);
+	}
+	
+	protected void doPost(HttpServletRequest request,HttpServletResponse response) throws ServletException, IOException{
+		doGet(request, response);
 	}
 
 }
