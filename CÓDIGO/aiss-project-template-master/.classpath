@@ -54,5 +54,16 @@
 			<attribute name="maven.scope" value="compile"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/ALVARO/.m2/repository/org/mockito/mockito-all/2.0.2-beta/mockito-all-2.0.2-beta.jar" sourcepath="C:/Users/ALVARO/.m2/repository/org/mockito/mockito-all/2.0.2-beta/mockito-all-2.0.2-beta-sources.jar">
+		<attributes>
+			<attribute name="maven.pomderived" value="true"/>
+			<attribute name="test" value="true"/>
+			<attribute name="org.eclipse.jst.component.nondependency" value=""/>
+			<attribute name="maven.groupId" value="org.mockito"/>
+			<attribute name="maven.artifactId" value="mockito-all"/>
+			<attribute name="maven.version" value="2.0.2-beta"/>
+			<attribute name="maven.scope" value="test"/>
+		</attributes>
+	</classpathentry>
 	<classpathentry kind="output" path="target/project_name-0.0.1-SNAPSHOT/WEB-INF/classes"/>
 </classpath>

@@ -41,4 +41,21 @@
     <servlet-name>GoogleMaps</servlet-name>
     <url-pattern>/GoogleMaps</url-pattern>
   </servlet-mapping>
-</web-app>
+  <servlet>
+      <servlet-name>WeatherController</servlet-name>
+      <servlet-class>aiss.controller1.WeatherController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+      <servlet-name>WeatherController</servlet-name>
+      <url-pattern>/WeatherController</url-pattern>
+  </servlet-mapping>
+   <servlet>
+      <servlet-name>LocationController</servlet-name>
+      <servlet-class>aiss.controller1.LocationController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+      <servlet-name>LocationController</servlet-name>
+      <url-pattern>/LocationController</url-pattern>
+  </servlet-mapping>
+  </web-app>
+  

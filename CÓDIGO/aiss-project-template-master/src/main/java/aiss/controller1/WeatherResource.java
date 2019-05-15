@@ -19,7 +19,7 @@ public class WeatherResource {
 	public Apixu getCurrent(String region) throws UnsupportedEncodingException {
 		// TODO Auto-generated method stub
 		String region1 = URLEncoder.encode(region, "UTF-8");
-		String uri = "http://api.apixu.com/v1/currennt.json?key=" + APIXU_API_KEY + "&q=" + region1;
+		String uri = "http://api.apixu.com/v1/current.json?key=" + APIXU_API_KEY + "&q=" + region1;
 		log.log(Level.FINE, "Current weather:" + uri);
 		ClientResource cr = new ClientResource(uri);
 		Apixu result = cr.get(Apixu.class);

@@ -13,7 +13,6 @@
         <td colspan="2" style="font-weight:bold;">Enlaces de la página:</td>        
       </tr>
       <tr>
-        <td><a href="helloworld">HelloWorld</a>
         <br><a href="ReadMe">Sobre nosotros</a>
         <br><a href="Twitter">Twitter Profile</a></td>
       </tr>
@@ -29,6 +28,10 @@
 		<form id="searchForm" action="GoogleMaps" method="post">
 			location: <input type="text" name="place" required/>  
 			<input type="submit" name="searchBtn" title="search" value="search">
+		</form>
+		<br>
+		<form id="searchForm" action="LocationController" method="post">
+			<button type="button" name="btn" value="button">GET STARTED</button>
 		</form>
 	</div>
   </body>
