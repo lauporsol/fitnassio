@@ -34,6 +34,7 @@ public class GoogleMaps extends HttpServlet {
 		out.println("<head><title>Embeded Map</title></head>");
 		out.println("<body>");
 		out.println("<iframe width='600' height='450' frameborder='0' style='border:0' src='https://www.google.com/maps/embed/v1/place?q="+place+"&key=AIzaSyDZoKEdcapvOACB9iE95Qnxi8vukkqmjDM' allowfullscreen></iframe>");
+		out.println("<iframe width='600' height='450' frameborder='0' style='border:0' src='https://www.google.com/maps/embed/v1/place?q=37.3834,-5.9789&key=AIzaSyDZoKEdcapvOACB9iE95Qnxi8vukkqmjDM' allowfullscreen></iframe>");
 		out.println("<a href='https://maps.googleapis.com/maps/api/place/findplacefromtext/json?input="+place+"&inputtype=textquery&fields=photos,formatted_address,name,rating,opening_hours,geometry&key=AIzaSyDZoKEdcapvOACB9iE95Qnxi8vukkqmjDM'>Lugar elegido</a>");
 		out.println("<p>Mapa Localización.</p>");
 		out.println("</body></html>");

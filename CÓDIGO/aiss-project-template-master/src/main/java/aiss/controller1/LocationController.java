@@ -25,23 +25,24 @@ private static final long serialVersionUID = 1L;
 	
 protected void doGet(HttpServletRequest request,HttpServletResponse response) throws ServletException, IOException{
 		
-		String  button = request.getParameter("button");
+		
 		RequestDispatcher rd = null;
 		
 		log.log(Level.FINE, "Searching for current Location");
 		LocationResource location = new LocationResource();
 		
-		if("button".equals(button)) {
+		
 		Ipstack result = location.getLocation();
 		
 		if (result!=null){
-			rd = request.getRequestDispatcher("/succesLocation");
-			request.setAttribute("loc", result.getCity());		
+			request.setAttribute("loc", result.getCity());
+			rd = request.getRequestDispatcher("/succesLocation.jsp");
+					
 		} else {
 			log.log(Level.SEVERE, "Ipstack Object: " + result);
 			rd = request.getRequestDispatcher("/error.jsp");
 		}
-		}
+		
 		rd.forward(request, response);
 	}
 	

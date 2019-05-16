@@ -1,6 +1,7 @@
 package aiss.controller1;
 
 import java.io.IOException;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -10,6 +11,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import GoogleMapsSearch.Result;
 import apixu.Apixu;
 
 public class GetStartedController extends HttpServlet{
@@ -24,29 +26,41 @@ private static final long serialVersionUID = 1L;
 	
 	protected void doGet(HttpServletRequest request,HttpServletResponse response) throws ServletException, IOException{
 		
-		String  button = request.getParameter("button");
+
 		RequestDispatcher rd = null;
 		
 		log.log(Level.FINE, "Searching for current Location");
-		LocationResource location = new LocationResource();
 		
-		if("button".equals(button)) {
+		LocationResource location = new LocationResource();	
+		String ciudad = location.getLocation().getCity();
+		Double latitud = location.getLocation().getLatitude();
+		Double longitud = location.getLocation().getLongitude();
+		
+		WeatherResource weather = new WeatherResource();
+		Double current = weather.getCurrent(ciudad).getCurrent().getFeelslikeC();
+		Double wind = weather.getCurrent(ciudad).getCurrent().getWindKph();
+		String tiempoAt = weather.getCurrent(ciudad).getCurrent().getCondition().getText();
+		String urlImagen = weather.getCurrent(ciudad).getCurrent().getCondition().getIcon();
+		
+		MapResource search = new MapResource();
+		List<Result> places = search.getPlaces(latitud, longitud).getResults();
+		
 			
-			String ciudad = location.getLocation().getCity();
-			
-			WeatherResource weather = new WeatherResource();
-			Apixu result = weather.getCurrent(ciudad);
-			
-			if (ciudad!=null || result!=null){
-				rd = request.getRequestDispatcher("vista perfil");
-				request.setAttribute("current", result.getCurrent().getFeelslikeC());	
-				request.setAttribute("region", ciudad);
-			} else {
-				log.log(Level.SEVERE, "Apixu Objecct: " + result);
-				rd = request.getRequestDispatcher("vista error");
-			}
+		if (ciudad!=null || current!=null){
+		request.setAttribute("region", ciudad);
+		request.setAttribute("current", current);	
+		request.setAttribute("wind", wind);
+		request.setAttribute("timepoAt", tiempoAt);
+		request.setAttribute("urlImagen", urlImagen);
+		request.setAttribute("latitud", latitud);
+		request.setAttribute("longitud", longitud);
+		request.setAttribute("places", places);
+		rd = request.getRequestDispatcher("vista perfil");
+
+		} else {
+			log.log(Level.SEVERE, "Apixu Object: " + current);
+			rd = request.getRequestDispatcher("vista error");
 		}
-		
 		
 		rd.forward(request, response);
 	}
