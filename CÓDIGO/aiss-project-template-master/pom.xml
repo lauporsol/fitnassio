@@ -48,6 +48,11 @@
 			<version>${appengine.version}</version>
 		</dependency>
 		<dependency>
+    		 <groupId>com.google.photos.library</groupId>
+    		 <artifactId>google-photos-library-client</artifactId>
+   		     <version>1.2.0</version>
+ 	    </dependency>
+		<dependency>
 			<groupId>javax.servlet</groupId>
 			<artifactId>servlet-api</artifactId>
 			<version>${servlet.version}</version>
