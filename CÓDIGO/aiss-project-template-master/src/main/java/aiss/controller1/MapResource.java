@@ -16,7 +16,7 @@ public class MapResource {
 	public GoogleMapsSearch getPlaces(Double latitud,Double longitud) throws UnsupportedEncodingException {
 		
 		String uri = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?"
-				+ "location="+latitud.toString()+","+longitud.toString()+"&radius=1500&type=restaurant&keyword=cruise&key="
+				+ "location="+latitud.toString()+","+longitud.toString()+"&radius=1500&type=natural_feature&keyword=cruise&key="
 				+MAPS_API_KEY;
 		log.log(Level.FINE, "Places nearby:" + uri);
 		ClientResource cr = new ClientResource(uri);

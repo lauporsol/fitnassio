@@ -1,0 +1,28 @@
+body{
+
+  background-image: url("Error.gif");
+  background-repeat: no-repeat;
+  background-size: 40%;
+  background-position: center;
+  background-attachment: fixed;
+
+}
+
+.enlace{
+  text-align: center;
+  position: fixed;
+}
+
+a:link{
+color: #f96748;
+text-decoration-line: overline;
+}
+
+a:hover{
+  color: lightsteelblue;
+  text-decoration-line: overline underline;
+}
+
+a:visited{
+  color: wheat;
+}

@@ -9,7 +9,7 @@
     <url-pattern>/helloworld</url-pattern>
   </servlet-mapping>
   <welcome-file-list>
-    <welcome-file>index.html</welcome-file>
+    <welcome-file>AissStart.jsp</welcome-file>
   </welcome-file-list>
   <servlet>
     <description></description>
@@ -56,6 +56,14 @@
   <servlet-mapping>
       <servlet-name>LocationController</servlet-name>
       <url-pattern>/LocationController</url-pattern>
+  </servlet-mapping>
+  <servlet>
+      <servlet-name>GetStartedController</servlet-name>
+      <servlet-class>aiss.controller1.GetStartedController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+      <servlet-name>GetStartedController</servlet-name>
+      <url-pattern>/GetStartedController</url-pattern>
   </servlet-mapping>
   </web-app>
   

@@ -44,7 +44,7 @@ private static final long serialVersionUID = 1L;
 		
 		MapResource search = new MapResource();
 		List<Result> places = search.getPlaces(latitud, longitud).getResults();
-		
+		String url = "https://www.google.com/maps/embed/v1/place?q="+latitud+","+longitud+"&key=AIzaSyDZoKEdcapvOACB9iE95Qnxi8vukkqmjDM";
 			
 		if (ciudad!=null || current!=null){
 		request.setAttribute("region", ciudad);
@@ -55,11 +55,12 @@ private static final long serialVersionUID = 1L;
 		request.setAttribute("latitud", latitud);
 		request.setAttribute("longitud", longitud);
 		request.setAttribute("places", places);
-		rd = request.getRequestDispatcher("vista perfil");
+		request.setAttribute("url", url);
+		rd = request.getRequestDispatcher("AissStats.jsp");
 
 		} else {
 			log.log(Level.SEVERE, "Apixu Object: " + current);
-			rd = request.getRequestDispatcher("vista error");
+			rd = request.getRequestDispatcher("AissError.html");
 		}
 		
 		rd.forward(request, response);

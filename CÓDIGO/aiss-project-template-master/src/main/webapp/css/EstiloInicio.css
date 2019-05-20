@@ -1,0 +1,34 @@
+body {
+  	background-image: url("running3.jpg");
+	background-repeat: no-repeat;
+	background-size: 100%;
+}
+
+h1{
+text-align: center;
+color: #f96748;
+letter-spacing: 6px;
+
+
+}
+
+.formulario{
+  margin: auto;
+  width: 30%;
+  border: 3px solid #f96748;
+  padding: 10px;
+}
+
+a:link{
+color: #f96748;
+text-decoration-line: overline;
+}
+
+a:hover{
+  color: lightsteelblue;
+  text-decoration-line: overline underline;
+}
+
+a:visited{
+  color: wheat;
+}
