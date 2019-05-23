@@ -1,9 +1,0 @@
-{	
-    "GoogleDrive": { 
-        "tokenUrl": "",
-        "clientId": "",
-        "clientSecret": "",
-        "authorizationFormUrl": "",
-        "scopes": []
-}
-}
