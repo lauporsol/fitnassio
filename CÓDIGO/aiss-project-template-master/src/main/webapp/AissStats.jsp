@@ -51,7 +51,7 @@
 <iframe src="https://calendar.google.com/calendar/embed?src=o93alktt41dkc7dp1r1ktaisrc@group.calendar.google.com&ctz=Europe
 /Madrid"style="border: 0" width="400" height="240" frameborder="0" scrolling="no"></iframe>
 
-    <a href="https://www.google.es/" class="button" style="vertical-align:middle"><span>Fit! </span></a>
+    <a href="/googleDriveFileList" class="button" style="vertical-align:middle"><span>Fit! </span></a>
 
 
 </div>

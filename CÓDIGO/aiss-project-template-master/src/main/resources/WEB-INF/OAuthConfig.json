@@ -1,0 +1,9 @@
+{	
+    "GoogleDrive": { 
+        "tokenUrl": "https://www.googleapis.com/oauth2/v4/token",
+        "clientId": "1088051713081-hff9o3553fam166l8tkkv5i7ak0rl2q7.apps.googleusercontent.com",
+        "clientSecret": "fbpwj3yvesihfzaAHfoPXKWn",
+        "authorizationFormUrl": "https://accounts.google.com/o/oauth2/v2/auth",
+        "scopes": ["https://www.googleapis.com/auth/drive"]
+    }
+}		

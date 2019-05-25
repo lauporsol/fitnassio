@@ -65,5 +65,73 @@
       <servlet-name>GetStartedController</servlet-name>
       <url-pattern>/GetStartedController</url-pattern>
   </servlet-mapping>
+  <servlet>
+        <servlet-name>GoogleDriveFileListController</servlet-name>
+        <servlet-class>aiss.controller.GoogleDriveFileListController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>GoogleDriveFileListController</servlet-name>
+        <url-pattern>/googleDriveFileList</url-pattern>
+    </servlet-mapping>
+    <!-- Google Drive files - delete -->
+    <servlet>
+        <servlet-name>GoogleDriveFileDeleteController</servlet-name>
+        <servlet-class>aiss.controller.GoogleDriveFileDeleteController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>GoogleDriveFileDeleteController</servlet-name>
+        <url-pattern>/googleDriveFileDelete</url-pattern>
+    </servlet-mapping>
+    <!-- Google Drive files - update -->
+    <servlet>
+        <servlet-name>GoogleDriveFileUpdateController</servlet-name>
+        <servlet-class>aiss.controller.GoogleDriveFileUpdateController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>GoogleDriveFileUpdateController</servlet-name>
+        <url-pattern>/googleDriveFileUpdate</url-pattern>
+    </servlet-mapping>
+    <!-- Google Drive files - create -->
+    <servlet>
+        <servlet-name>GoogleDriveFileNewController</servlet-name>
+        <servlet-class>aiss.controller.GoogleDriveFileNewController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>GoogleDriveFileNewController</servlet-name>
+        <url-pattern>/googleDriveFileNew</url-pattern>
+    </servlet-mapping>
+     <!--   GoogleDrive oAuth2 servlets    -->
+    <!-- GoogleDriveAuthController-->
+    <servlet>
+        <description/>
+        <servlet-name>GoogleDriveAuthController</servlet-name>
+        <servlet-class>aiss.controller.oauth.GenericAuthController</servlet-class>
+        <init-param>
+            <param-name>provider</param-name>
+            <param-value>GoogleDrive</param-value>
+        </init-param>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>GoogleDriveAuthController</servlet-name>
+        <url-pattern>/AuthController/GoogleDrive</url-pattern>
+    </servlet-mapping>
+    <!--GoogleDriveOAuth2Callback-->
+    <servlet>
+        <description/>
+        <servlet-name>GoogleDriveOAuth2Callback</servlet-name>
+        <servlet-class>aiss.controller.oauth.OAuth2Callback</servlet-class>
+        <init-param>
+            <param-name>provider</param-name>
+            <param-value>GoogleDrive</param-value>
+        </init-param>
+        <init-param>
+            <param-name>onSuccess</param-name>
+            <param-value>redirect:/googleDriveFileList</param-value>
+        </init-param>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>GoogleDriveOAuth2Callback</servlet-name>
+        <url-pattern>/oauth2callback/GoogleDrive</url-pattern> 
+    </servlet-mapping>
   </web-app>
   
