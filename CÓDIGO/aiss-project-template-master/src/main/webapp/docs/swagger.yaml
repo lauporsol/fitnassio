@@ -1,0 +1,391 @@
+swagger: "2.0"
+info:
+  description: “Aplicación para personas que practican deporte al aire libre.”
+  version: 1.0.0
+  title: “Fitnassio”
+  # put the contact info for your development or API team
+  contact:
+    email: "fitnassio.aiss@gmail.com"
+
+  license:
+    name: "Apache 2.0"
+    url: "http://www.apache.org/licenses/LICENSE-2.0.html"
+
+# all paths will be relative to the basePath specified
+# basePath: /v1
+# Added by API Auto Mocking Plugin
+# host: aiss-234315.appspot.com
+# basePath: /api
+# Added by API Auto Mocking Plugin
+host: virtserver.swaggerhub.com
+# basePath: /GrupoMARC/M.A.R.C/1.0.0
+# tags are used for organizing operations
+tags:
+  - name: "admins"
+    description: "Secured Admin-only calls"
+  - name: "developers"
+    description: "Operations available to regular developers"
+schemes:
+  - "https"
+paths:
+  "/files":
+    get:
+      tags:
+      - "Recurso de Google Drive"
+      summary: "Método que devuelve todos los archivos de un usuario"
+      operationId: "getfiles"
+      produces:
+        - "application/json"
+      parameters: []
+      responses:
+        200:
+          description: "Todos los archivos"
+          schema:
+            type: "files"
+            items:
+              $ref: "#/definitions/FileItem"
+        404:
+          description: "Error"
+
+  "/files/{id}":
+    get:
+      tags:
+      - "Recurso Google Drive"
+      summary: "Método que devuelve un archivo con un determinado id"
+      operationId: "getFile"
+      produces:
+        - "application/json"
+      parameters:
+        - in: "path"
+          name: "id"
+          description: "id del archivo"
+          required: true
+          type: "string"
+      responses:
+        200:
+          description: "Archivo según un determinado id"
+          schema:
+            $ref: "#/definitions/FileItem"
+        404:
+          description: "Error"
+
+          
+  "/files/{FileItem item}":
+    get:
+      tags:
+      - "Recurso de Google Drive"
+      summary: "Método para leer las Files de Google Drive"
+      operationId: "getFileContent"
+      produces:
+        - "application/json"
+      parameters:
+        - in: "item"
+          name: "item"
+          description: "item"
+          required: true
+          type: "FileItem"
+      responses:
+        200:
+          description: "archivo concreto"
+          schema:
+            type: "FileItem"
+            items:
+              $ref: "#/definitions/FileItem"
+        404:
+          description: "Error"
+
+  "/location":
+    get:
+      tags:
+      - "Recurso Location"
+      summary: "Método que devuelve la localización"
+      operationId: "getLocation"
+      produces:
+        - "application/json"
+      parameters: 
+      responses:
+        200:
+          description: "Localización"
+          schema:
+            type: "Ipstack"
+            items:
+              $ref: "#/definitions/Location"
+        404:
+          description: "Error"
+
+          
+          
+  "/maps":
+    get:
+      tags:
+      - "Recurso Google Maps"
+      summary: "Método que devuelve un mapa"
+      operationId: "getPlaces"
+      produces:
+        - "application/json"
+      responses:
+        200:
+          description: "Mapa"
+          schema:
+            type: "GoogleMapsSearch"
+            items:
+              $ref: "#/definitions/GoogleMapsSearch"
+        404:
+          description: "Error"
+          
+  "/Apixu/{String region}":
+    get:
+      tags:
+      - "Recurso tiempo meteorológico de Apixu"
+      summary: "Método que devuelve el tiempo"
+      operationId: "getCurrent"
+      produces:
+        - "application/json"
+      parameters:
+        - in: "path"
+          name: "region"
+          description: "localización regional"
+          required: true
+          type: "String"
+      responses:
+        200:
+          description: "Tiempo meteorológico del lugar que se pasa como parámetro"
+          schema:
+            type: "Apixu"
+            items:
+              $ref: "#/definitions/Apixu"
+        404:
+          description: "Error"
+     
+  "/files/{file}/{id}":
+    post:
+      tags:
+      - "Recurso Google Drive"
+      summary: "Método que añade un archivo"
+      operationId: "insertFile"
+      consumes:
+        - "application/json"
+      produces:
+        - "application/json"
+      parameters:
+        - in: "item"
+          name: "file"
+          description: "Archivo"
+          required: true
+          type: "FileItem"
+        - in: "path"
+          name: "content"
+          description: "Contenido de archivo"
+          required: true
+          type: "string"
+      responses:
+        201:
+          description: "Archivo insertado correctamente"
+          schema:
+            $ref: "#/definitions/String"
+        400:
+          description: "Error"
+    put:
+      tags:
+      - "Recurso Google Drive"
+      summary: "Método que actualiza un archivo"
+      operationId: "updateFile"
+      consumes:
+        - "application/json"
+      parameters:
+        - in: "FileItem"
+          name: "file"
+          description: "archivo"
+          required: true
+          schema:
+            $ref: "#/definitions/GoogleDrive"
+      responses:
+        204:
+          description: "contenido actualizado correctamente"
+        400:
+          description: "Error"
+        404:
+          description: "Archivo no encontrado"
+    delete:
+      tags:
+      - "Recurso Google Drive"
+      summary: "Método que elimina un archivo"
+      operationId: "deleteFile"
+      consumes:
+        - "application/json"
+      parameters:
+        - in: "path"
+          name: "id"
+          description: "id del archivo"
+          required: true
+          type: "string"
+      responses:
+        204:
+          description: "Archivo eliminado correctamente"
+        404:
+          description: "Error"
+definitions:
+  FileItem:
+    required:
+      -id
+      - title
+      - webContentLink
+      - downloadUrl
+      - fileSize
+    properties:
+      id:
+        type: string
+        example: a1
+      title:
+        type: string
+        example: Prueba
+      webContentLink:
+        type: string
+        example: https://drive.google.com/file/d/0B3sSRw0Ckp4fQWtsMEYtemgyQUU/view?usp=sharing
+      downloadUrl:
+        type: string
+        example: https://drive.google.com/file/d/0B3sSRw0Ckp4fQWtsMEYtemgyQUU/view?usp=sharing
+    fileSize:
+        type: string
+        example: 270MB     
+  Files:
+    required:
+      - kind
+      - etag
+      - selfLink
+      - nextPageToken
+      - nextLink
+      - incompleteSearch
+      - items
+      - serialVersionUID
+    properties:
+      Kind:
+        type: String
+        example: photo
+      Etag:
+        type: String
+      SelfLink:
+        type: String
+      NextPageToken:
+        type: String
+      NextLink:
+        type: String
+      IncompleteSearch:
+        type: Boolean
+      Items:
+        type: List<FileItem>
+Current:
+    required:
+      - tempF
+      - windMph
+      - humidity
+      - cloud
+      - precipIn
+      - isDay
+    properties:
+      lastUpdated:
+        type: String
+      lastUpdatedEpoch:
+        type: Integer
+      tempC:
+        type: Double
+      tempF:
+        type: Double
+      isDay:
+        type: Integer
+      condition:
+        type: Condition
+      windKph:
+        type: Double
+      windMph:
+        type: Double
+      windDegree:
+        type: Integer
+      windDir:
+        type: String
+      pressureMb:
+        type: Double
+      pressureIn:
+        type: Double
+      precipMm:
+        type: Double
+      precipIn:
+        type: Double
+      humidity:
+        type: Integer
+      cloud:
+        type: Integer
+      feelslikeC:
+        type: Double
+      feelslikeF:
+        type: Double
+      visKm:
+        type: Double
+      visMiles:
+        type: Double
+      uv:
+        type: Double
+      gustMph:
+        type: Double
+      gustKph:
+        type: Double
+
+Ipstack:
+    required:
+      -ip
+      -continent_name
+      -country_name
+      -region_name
+      -city
+      -zip
+      -latitude
+      -longitude
+    properties:
+     ip:
+        type: String
+     continent_code:
+        type: String
+     continent_name:
+        type: String
+     country_code:
+        type: String
+     country_name:
+        type: String
+     region_code:
+        type: String
+     region_name:
+        type: String
+     city:
+        type: String
+     zip:
+        type: String
+     latitude:
+        type: Double
+     longitude:
+        type: Double
+GoogleMapsSearch:
+    required:
+      - status
+      - htmlAttributions
+    properties:
+     htmlAttributions:
+        type: List<Object>
+     results:
+        type: List<Result>
+     status:
+        type: String
+     additionalProperties:
+        type: Map<String,Object>
+Apixu:
+    required:
+      - location
+      - current
+    properties:
+     location:
+        type: Location
+     current:
+        type: Current
+     additionalProperties:
+        type: Map<String,Object>
+# Added by API Auto Mocking Plugin
+basePath: /F169/Fitnassio/1.0.0
